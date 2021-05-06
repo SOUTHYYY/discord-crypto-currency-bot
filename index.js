@@ -16,7 +16,7 @@ client.on("message", async (message) => {
 
   const args = message.content.slice(prefix.length).trim().split(" ");
   // TODO: Crate feature with command
-  // const command = args.shift().toLowerCase();
+  const command = args.shift().toLowerCase();
 
   if (!args.length) {
     return message.channel.send(
@@ -58,7 +58,9 @@ client.on("message", async (message) => {
 🕝 За 7 дней: ${percent_change_7d.toFixed(1)}%`
     );
   } catch {
-    return message.channel.send("Чот сломалось");
+    return message.channel.send(
+      `Мне не удалось получить данные о: ${tickerArg}. Попробуй еще раз!`
+    );
   }
 });
 
